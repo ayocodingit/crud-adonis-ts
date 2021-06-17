@@ -37,7 +37,7 @@ export default class ExceptionHandler extends HttpExceptionHandler {
       'url': ctx.request.completeUrl(true),
       'status': ctx.response.getStatus(),
       'user-agent': ctx.request.headers()['user-agent'],
-      'date': moment().toISOString()
+      'date': moment().toISOString(),
     })
 
     if (ctx.response.getStatus() >= 500) {

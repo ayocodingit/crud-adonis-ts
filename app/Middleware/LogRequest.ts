@@ -11,7 +11,7 @@ export default class LogRequest {
       'url': request.completeUrl(true),
       'status': response.getStatus(),
       'user-agent': request.headers()['user-agent'],
-      'date': moment().toISOString()
+      'date': moment().toISOString(),
     })
 
     childLogger.info('Log Request ...')
