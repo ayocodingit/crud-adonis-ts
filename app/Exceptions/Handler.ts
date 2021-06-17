@@ -3,6 +3,7 @@ import Logger from '@ioc:Adonis/Core/Logger'
 import { HttpContextContract } from '@ioc:Adonis/Core/HttpContext'
 import HttpExceptionHandler from '@ioc:Adonis/Core/HttpExceptionHandler'
 import Sentry from '@ioc:Adonis/Addons/Sentry'
+import moment from 'moment'
 
 export default class ExceptionHandler extends HttpExceptionHandler {
   constructor() {
@@ -36,6 +37,7 @@ export default class ExceptionHandler extends HttpExceptionHandler {
       'url': ctx.request.completeUrl(true),
       'status': ctx.response.getStatus(),
       'user-agent': ctx.request.headers()['user-agent'],
+      'date': moment().toISOString()
     })
 
     if (ctx.response.getStatus() >= 500) {

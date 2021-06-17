@@ -1,4 +1,5 @@
 import { HttpContextContract } from '@ioc:Adonis/Core/HttpContext'
+import moment from 'moment'
 
 export default class LogRequest {
   public async handle(
@@ -10,6 +11,7 @@ export default class LogRequest {
       'url': request.completeUrl(true),
       'status': response.getStatus(),
       'user-agent': request.headers()['user-agent'],
+      'date': moment().toISOString()
     })
 
     childLogger.info('Log Request ...')
